@@ -1,0 +1,21 @@
+[project]
+name = "confident-agent"
+version = "1.0.0"
+description = "Relay agent for bridging Confident AI evaluation server to internal AI connections endpoints"
+authors = [
+    { name = "Confident AI, Inc.", email = "dev@confident-ai.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.9.0",
+    "pydantic>=2.7.0",
+    "python-dotenv>=1.0.0",
+]
+
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
