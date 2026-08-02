@@ -1,0 +1,35 @@
+{
+  "name": "@confident-ai/agent",
+  "version": "1.0.0",
+  "description": "Relay agent for bridging Confident AI evaluation server to internal AI connections endpoints",
+  "author": "Confident AI, Inc. <dev@confident-ai.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/confident-ai/confident-agent.git"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "confident-agent": "dist/main.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "ws": "^8.21.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@types/ws": "^8.18.1",
+    "typescript": "^7.0.2"
+  }
+}

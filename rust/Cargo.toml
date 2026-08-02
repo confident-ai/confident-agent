@@ -1,0 +1,27 @@
+[package]
+name = "confident-agent"
+version = "1.0.0"
+edition = "2021"
+description = "Relay agent for bridging Confident AI evaluation server to internal AI connections endpoints"
+license = "Apache-2.0"
+repository = "https://github.com/confident-ai/confident-agent"
+readme = "README.md"
+
+[lib]
+name = "confident_agent"
+path = "src/lib.rs"
+
+[[bin]]
+name = "confident-agent"
+path = "src/main.rs"
+
+[dependencies]
+dotenvy = "0.15.7"
+env_logger = "0.11.11"
+futures-util = { version = "0.3.33", features = ["sink"] }
+log = "0.4.33"
+reqwest = { version = "0.13.4", default-features = false, features = ["json", "stream", "rustls"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+tokio = { version = "1.53.1", features = ["rt-multi-thread", "macros", "signal", "time"] }
+tokio-tungstenite = { version = "0.30.0", features = ["rustls-tls-webpki-roots"] }
