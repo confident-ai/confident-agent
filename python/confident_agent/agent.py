@@ -1,18 +1,21 @@
 import asyncio
 import json
 import logging
+from typing import Callable, Optional
 
 import aiohttp
 from pydantic import ValidationError
 
-from config import (
+from .config import (
     CONFIDENT_API_KEY,
+    CONFIDENT_HANDLER,
     CONFIDENT_WS_BASE_URL,
     HEARTBEAT_INTERVAL_S,
     INITIAL_RECONNECT_DELAY_S,
     MAX_RECONNECT_DELAY_S,
 )
-from schemas import RelayRequest, RelayResponse, RelayResponseType, ResponseMode
+from .handler import execute_handler, load_handler
+from .schemas import RelayRequest, RelayResponse, RelayResponseType, ResponseMode
 
 logger = logging.getLogger("relay-agent")
 
@@ -22,9 +25,11 @@ class RelayAgent:
         self,
         server_url: str,
         api_key: str,
+        handler_fn: Optional[Callable] = None,
     ):
         self.server_url = server_url
         self.api_key = api_key
+        self.handler_fn = handler_fn
         self._reconnect_delay = INITIAL_RECONNECT_DELAY_S
         self._running = True
 
@@ -81,6 +86,13 @@ class RelayAgent:
             request = RelayRequest.model_validate_json(raw)
         except ValidationError as e:
             logger.error(f"failed to parse relay request: {e}")
+            return
+
+        if self.handler_fn is not None:
+            logger.info(f"[handler] running handler (request {request.id})")
+            relay_response = await execute_handler(self.handler_fn, request)
+            await ws.send_json(relay_response.model_dump())
+            logger.info(f"[handler] {relay_response.statusCode} (request {request.id})")
             return
 
         try:
@@ -163,13 +175,20 @@ class RelayAgent:
         self._running = False
 
 
-def create_agent() -> RelayAgent:
+def create_agent(handler_path: Optional[str] = None) -> RelayAgent:
     if not CONFIDENT_API_KEY:
         raise ValueError("CONFIDENT_API_KEY is required")
     if not CONFIDENT_WS_BASE_URL:
         raise ValueError("CONFIDENT_WS_BASE_URL is required")
 
+    handler_fn = None
+    handler_path = handler_path or CONFIDENT_HANDLER
+    if handler_path:
+        handler_fn = load_handler(handler_path)
+        logger.info(f"handler mode: loaded {handler_fn.__name__} from {handler_path}")
+
     return RelayAgent(
         server_url=CONFIDENT_WS_BASE_URL,
         api_key=CONFIDENT_API_KEY,
+        handler_fn=handler_fn,
     )

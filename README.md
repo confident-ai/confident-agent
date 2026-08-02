@@ -1,39 +1,18 @@
 # Confident Agent
 
-A lightweight bridge agent that allows Confident AI's evaluation server to reach internal API endpoints behind firewalls, without opening inbound ports.
+A lightweight agent that connects your private network to Confident AI's evaluation server — without opening inbound ports. It runs in one of two modes:
+
+- **Forwarding mode** (default): requests are forwarded through the agent's outbound WebSocket tunnel to an internal API endpoint, and responses are relayed back.
+- **Handler mode**: for AI apps with **no HTTP endpoint**. You write a small `@handler` function; the agent runs it locally for each evaluation input and relays the output back.
 
 ## How it works
 
-The agent connects outbound via WebSocket Secure (WSS) to Confident AI's evaluation server and waits for work. When an evaluation runs, requests are forwarded through the WebSocket tunnel to your internal endpoint and responses are relayed back.
+The agent connects outbound via WebSocket Secure (WSS) to Confident AI's evaluation server and waits for work. When an evaluation runs, each request is either forwarded to your internal endpoint (forwarding mode) or passed to your handler function (handler mode).
 
-Supports HTTP Response, HTTP Streaming and SSE Streaming response modes.
+Forwarding mode supports HTTP Response, HTTP Streaming and SSE Streaming response modes.
 
 ![Architecture](assets/architecture.png)
 
-## Quick Start
+## Getting started
 
-### Docker Container (CLI)
-
-```bash
-docker run -d \
-  -e CONFIDENT_API_KEY=<your-api-key> \
-  -e CONFIDENT_WS_BASE_URL=wss://deepeval.confident-ai.com/ws/relay \
-  confidentai/confident-agent
-```
-
-### Docker Compose (compose.yaml)
-
-```yaml
-services:
-  confident-agent:
-    image: confidentai/confident-agent
-    restart: unless-stopped
-    environment:
-      - CONFIDENT_API_KEY=${CONFIDENT_API_KEY}
-      - CONFIDENT_WS_BASE_URL=${CONFIDENT_WS_BASE_URL:-wss://deepeval.confident-ai.com/ws/relay}
-```
-
-## Requirements
-
-- Outbound internet access (WSS/443)
-- Network access to your internal API endpoint
+The Python implementation lives in [`python/`](python/) — see its [README](python/README.md) for setup, configuration, and usage.

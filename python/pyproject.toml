@@ -12,9 +12,11 @@ dependencies = [
     "python-dotenv>=1.0.0",
 ]
 
+[project.scripts]
+confident-agent = "confident_agent.main:run"
 
 [tool.poetry]
-package-mode = false
+packages = [{ include = "confident_agent" }]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

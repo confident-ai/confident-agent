@@ -36,4 +36,4 @@ RUN chown -R confident:confident /app
 
 USER confident
 
-CMD ["python", "main.py"]
+CMD ["python", "-m", "confident_agent"]
