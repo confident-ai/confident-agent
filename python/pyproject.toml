@@ -5,6 +5,7 @@ description = "Relay agent for bridging Confident AI evaluation server to intern
 authors = [
     { name = "Confident AI, Inc.", email = "dev@confident-ai.com" }
 ]
+readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "aiohttp>=3.9.0",
