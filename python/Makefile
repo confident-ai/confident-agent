@@ -4,7 +4,7 @@ setup:
 	poetry install
 
 dev:
-	poetry env activate && poetry run confident-agent
+	poetry run confident-agent
 
 build:
 	docker buildx build \

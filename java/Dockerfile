@@ -16,7 +16,7 @@ WORKDIR /app
 
 RUN addgroup --system confident && adduser --system --ingroup confident confident
 
-COPY --from=build /app/target/confident-agent-1.0.1-all.jar /app/confident-agent.jar
+COPY --from=build /app/target/confident-agent-*-all.jar /app/confident-agent.jar
 RUN chown -R confident:confident /app
 
 USER confident

@@ -8,7 +8,7 @@ The agent connects outbound via WebSocket Secure (WSS) to Confident AI's evaluat
 
 Supports HTTP Response, HTTP Streaming and SSE Streaming response modes.
 
-![Architecture](assets/architecture.png)
+![Architecture](../assets/architecture.png)
 
 ## Quick Start
 

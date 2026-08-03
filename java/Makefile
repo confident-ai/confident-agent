@@ -4,7 +4,7 @@ setup:
 	mvn -q dependency:go-offline
 
 dev:
-	mvn -q package && java -jar target/confident-agent-1.0.1-all.jar
+	mvn -q package && java -jar target/confident-agent-*-all.jar
 
 build:
 	docker buildx build \

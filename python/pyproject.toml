@@ -2,6 +2,7 @@
 name = "confident-agent"
 version = "1.0.0"
 description = "Relay agent for bridging Confident AI evaluation server to internal AI connections endpoints"
+license = "Apache-2.0"
 authors = [
     { name = "Confident AI, Inc.", email = "dev@confident-ai.com" }
 ]
@@ -12,6 +13,10 @@ dependencies = [
     "pydantic>=2.7.0",
     "python-dotenv>=1.0.0",
 ]
+
+[project.urls]
+Homepage = "https://confident-ai.com"
+Repository = "https://github.com/confident-ai/confident-agent"
 
 [project.scripts]
 confident-agent = "confident_agent.main:run"
