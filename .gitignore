@@ -1,53 +1,78 @@
-# Ignore Python compiled files
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Python bytecode and native extensions
 *.pyc
 *.pyo
 *.pyd
-
-# Ignore __pycache__ directories
 __pycache__/
 
-# Ignore virtual environment directories
+# Python environments, builds, and tooling
+.venv/
 venv/
 env/
 ENV/
-
-# Ignore Jupyter Notebook checkpoints
+*.egg
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.hypothesis/
 .ipynb_checkpoints/
-
-# Ignore local settings
 local_settings.py
 
-# Ignore logs
-*.log
-
-# Ignore MacOS specific files
-.DS_Store
-
-# Ignore directories created by testing frameworks
+# Test and coverage output
 .coverage
-*.cover
 .coverage.*
-.cache
+*.cover
+coverage/
+htmlcov/
 nosetests.xml
 coverage.xml
 
-# Ignore build directories
-build/
-dist/
-target/
-*.egg-info/
-dependency-reduced-pom.xml
-
-# Ignore Node.js dependencies
+# Node.js dependencies and build output
 node_modules/
+*.tsbuildinfo
+.eslintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Ignore editor specific files
+# Rust build output
+target/
+
+# Java/Maven build and release output
+dependency-reduced-pom.xml
+release.properties
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+.flattened-pom.xml
+*.class
+hs_err_pid*
+
+# Tool caches and temporary files
+.cache/
+*.tmp
+*.temp
+*.bak
+*.orig
+*~
+*.log
+
+# Editors and operating systems
 .vscode/
 .idea/
+*.iml
 *.swp
-
-# Ignore knowledge base
-experiment/conversation_simulator/test/medical_data/
-chroma_db/
-
-.env
+*.swo
+.DS_Store
+Thumbs.db

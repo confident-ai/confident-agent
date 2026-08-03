@@ -20,9 +20,9 @@ The agent is implemented in five languages, each in its own folder with the same
 | Language   | Folder                       | Package                                                                |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------- |
 | Python     | [`python/`](python/)         | [`confident-agent`](https://pypi.org/project/confident-agent/) on PyPI |
-| TypeScript | [`typescript/`](typescript/) | `confident-agent` on npm                                               |
-| Go         | [`go/`](go/)                 | `github.com/confident-ai/confident-agent/go`                           |
-| Java       | [`java/`](java/)             | `ai.confident:confident-agent` on Maven Central                        |
-| Rust       | [`rust/`](rust/)             | `confident-agent` on crates.io                                         |
+| TypeScript | [`typescript/`](typescript/) | [`confident-agent`](https://www.npmjs.com/package/confident-agent) on npm |
+| Go         | [`go/`](go/)                 | [`github.com/confident-ai/confident-agent/go`](https://pkg.go.dev/github.com/confident-ai/confident-agent/go) |
+| Java       | [`java/`](java/)             | [`com.confident-ai:confident-agent`](https://central.sonatype.com/artifact/com.confident-ai/confident-agent) on Maven Central |
+| Rust       | [`rust/`](rust/)             | [`confident-agent`](https://crates.io/crates/confident-agent) on crates.io |
 
 Python and TypeScript support loading a handler from a file (`--handler`); in Go, Java, and Rust, handler mode is library-based — you register your handler in code and start the agent from your own entry point.

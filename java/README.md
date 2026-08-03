@@ -37,16 +37,16 @@ Maven:
 
 ```xml
 <dependency>
-  <groupId>ai.confident</groupId>
+  <groupId>com.confident-ai</groupId>
   <artifactId>confident-agent</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
 Gradle:
 
 ```groovy
-implementation 'ai.confident:confident-agent:1.0.0'
+implementation 'com.confident-ai:confident-agent:1.0.1'
 ```
 
 ## Modes
@@ -56,12 +56,12 @@ implementation 'ai.confident:confident-agent:1.0.0'
 Run the shaded jar (or Docker image). Incoming relay requests are forwarded as HTTP requests to your internal endpoint:
 
 ```bash
-java -jar confident-agent-1.0.0.jar
+java -jar confident-agent-1.0.1-all.jar
 ```
 
 ### Handler mode (library)
 
-Unlike the Python package, which loads an `@handler` function from a script file (`--handler` / `CONFIDENT_HANDLER`), Java has no script-file loading. Handler mode works as a library instead: depend on `ai.confident:confident-agent`, register exactly one handler with `Decorator.handler(...)` (the Java analog of the `@handler` decorator), then start the agent:
+Unlike the Python package, which loads an `@handler` function from a script file (`--handler` / `CONFIDENT_HANDLER`), Java has no script-file loading. Handler mode works as a library instead: depend on `com.confident-ai:confident-agent`, register exactly one handler with `Decorator.handler(...)` (the Java analog of the `@handler` decorator), then start the agent:
 
 ```java
 import static ai.confident.agent.handler.Decorator.handler;

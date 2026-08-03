@@ -1,3 +1,5 @@
 .env
-confident-agent
+# Binary produced by `go build -o confident-agent`.
+/confident-agent
 *.test
+*.out
