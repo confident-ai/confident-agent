@@ -34,7 +34,12 @@ coverage.xml
 # Ignore build directories
 build/
 dist/
+target/
 *.egg-info/
+dependency-reduced-pom.xml
+
+# Ignore Node.js dependencies
+node_modules/
 
 # Ignore editor specific files
 .vscode/

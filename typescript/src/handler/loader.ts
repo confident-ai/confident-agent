@@ -27,7 +27,7 @@ export async function loadHandler(path: string): Promise<HandlerFn> {
   if (registered.length === 0) {
     throw new HandlerError(
       `no handler function found in ${basename(file)} — register exactly one ` +
-        "function with handler() from @confident-ai/agent"
+        "function with handler() from confident-agent"
     );
   }
   if (registered.length > 1) {

@@ -15,7 +15,7 @@ Supports HTTP Response, HTTP Streaming and SSE Streaming response modes.
 ### npm (CLI)
 
 ```bash
-npm install -g @confident-ai/agent
+npm install -g confident-agent
 
 CONFIDENT_API_KEY=<your-api-key> confident-agent
 ```
@@ -24,7 +24,7 @@ Or run a local handler function instead of forwarding:
 
 ```ts
 // my-handler.ts
-import { handler, type Request } from "@confident-ai/agent";
+import { handler, type Request } from "confident-agent";
 
 handler(async (request: Request) => {
   return {

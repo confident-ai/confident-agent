@@ -1,5 +1,5 @@
 {
-  "name": "@confident-ai/agent",
+  "name": "confident-agent",
   "version": "1.0.0",
   "description": "Relay agent for bridging Confident AI evaluation server to internal AI connections endpoints",
   "author": "Confident AI, Inc. <dev@confident-ai.com>",

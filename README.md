@@ -15,4 +15,14 @@ Forwarding mode supports HTTP Response, HTTP Streaming and SSE Streaming respons
 
 ## Getting started
 
-The Python implementation lives in [`python/`](python/) — see its [README](python/README.md) for setup, configuration, and usage.
+The agent is implemented in five languages, each in its own folder with the same structure and behavior. See each README for setup, configuration, and usage:
+
+| Language   | Folder                       | Package                                                                |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------- |
+| Python     | [`python/`](python/)         | [`confident-agent`](https://pypi.org/project/confident-agent/) on PyPI |
+| TypeScript | [`typescript/`](typescript/) | `confident-agent` on npm                                               |
+| Go         | [`go/`](go/)                 | `github.com/confident-ai/confident-agent/go`                           |
+| Java       | [`java/`](java/)             | `ai.confident:confident-agent` on Maven Central                        |
+| Rust       | [`rust/`](rust/)             | `confident-agent` on crates.io                                         |
+
+Python and TypeScript support loading a handler from a file (`--handler`); in Go, Java, and Rust, handler mode is library-based — you register your handler in code and start the agent from your own entry point.
